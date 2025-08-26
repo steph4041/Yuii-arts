@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Yuii Arts - Benvenuta</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #b3e0ff;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .background-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: calc(100vw - 180px);
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: yellow;
+            clip-path: polygon(
+                50% 0%,
+                61% 35%,
+                98% 35%,
+                68% 57%,
+                79% 91%,
+                50% 70%,
+                21% 91%,
+                32% 57%,
+                2% 35%,
+                39% 35%
+            );
+            z-index: 0;
+        }
+        .star1 { top: 190px; left: 30px; }
+        .star2 { top: 500px; left: 70vw; }
+        .star3 { top: 200px; left: 40vw; }
+        .star4 { top: 400px; left: 65vw; }
+        .star5 { top: 600px; left: 40vw; }
+        .star6 { top: 500px; left: 7vw; }
+        .star7 { top: 350px; left: 50vw; }
+        .star8 { top: 350px; left: 20vw; }
+
+        @media (max-width: 900px) {
+            .background-stars {
+                left: 0;
+                width: 100vw;
+            }
+            .star2 { left: 80vw; }
+            .star4 { left: 75vw; }
+            .star5 { left: 40vw; }
+            .star7 { left: 50vw; }
+        }
+        @media (max-width: 600px) {
+            .background-stars {
+                left: 0;
+                width: 100vw;
+            }
+            .star1 { left: 20px; }
+            .star2 { left: 70vw; }
+            .star3 { left: 8vw; }
+            .star4 { left: 65vw; }
+            .star5 { left: 30vw; }
+            .star6 { left: 3vw; }
+            .star7 { left: 40vw; }
+            .star8 { left: 20vw; }
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 2rem 0.5rem 2rem;
+            background: #222;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+        }
+        .header-title {
+            font-size: 2.2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            width: 100%;
+        }
+        .benvenuta {
+            font-size: 1.7rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 0 #fff7, 2px 2px 0 #2224;
+            margin: 1rem 0 0.5rem 0;
+            text-align: center;
+            width: 100%;
+        }
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 180px;
+            height: 100vh;
+            background: #111;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 40px;
+            z-index: 2;
+        }
+        .side-menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 1rem 0;
+            width: 100%;
+            text-align: center;
+            font-size: 1.2rem;
+            border-bottom: 1px solid #222;
+            transition: background 0.2s;
+            letter-spacing: 1px;
+        }
+        .side-menu a:hover {
+            background: #222;
+        }
+        .menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 2.2rem;
+            color: #fff;
+            position: absolute;
+            top: 10px;
+            right: 0;
+            left: 0;
+            margin: auto;
+            width: 40px;
+            z-index: 10;
+        }
+        .menu {
+            position: fixed;
+            top: 60px;
+            right: 210px;
+            background: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: none;
+            flex-direction: column;
+            z-index: 10;
+            min-width: 160px;
+        }
+        .menu a {
+            padding: 1rem 2rem;
+            text-decoration: none;
+            color: #222;
+            border-bottom: 1px solid #eee;
+            font-size: 1.1rem;
+        }
+        .menu a:last-child {
+            border-bottom: none;
+        }
+        .show {
+            display: flex;
+        }
+        main {
+            margin: 2rem 200px 2rem 2rem;
+            padding: 0;
+            background: none;
+            box-shadow: none;
+            max-width: none;
+            position: relative;
+            z-index: 1;
+        }
+        .panels {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        .panel {
+            background: orange;
+            padding: 2rem;
+            border-radius: 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            flex: 1;
+            min-width: 0;
+            font-size: 1.1rem;
+            border: 2px solid #ffb300;
+        }
+        .panel h2 {
+            margin-top: 0;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+        }
+        @media (max-width: 900px) {
+            .background-stars {
+                left: 0;
+                width: 100vw;
+            }
+            main {
+                margin: 2rem 0.5rem 2rem 0.5rem;
+                padding: 0;
+            }
+            .side-menu {
+                width: 100vw;
+                height: auto;
+                position: static;
+                flex-direction: row;
+                padding-top: 0;
+            }
+            .side-menu a {
+                flex: 1;
+                border-bottom: none;
+                border-right: 1px solid #222;
+            }
+            .side-menu a:last-child {
+                border-right: none;
+            }
+            .menu-btn, .menu {
+                right: 30px;
+                left: unset;
+            }
+        }
+        @media (max-width: 600px) {
+            main {
+                margin: 2rem 0.5rem 2rem 0.5rem;
+            }
+            .panel {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-stars">
+        <div class="star star1"></div>
+        <div class="star star2"></div>
+        <div class="star star3"></div>
+        <div class="star star4"></div>
+        <div class="star star5"></div>
+        <div class="star star6"></div>
+        <div class="star star7"></div>
+        <div class="star star8"></div>
+    </div>
+    <header>
+        <div class="header-title">Yuii Arts</div>
+        <div class="benvenuta">Benvenuta!</div>
+    </header>
+    <nav class="side-menu">
+        <button class="menu-btn" id="menuBtn">&#9776;</button>
+        <a href="comms.html">Comms</a>
+        <a href="esempi.html">Esempi</a>
+        <a href="prezzi.html">Prezzi</a>
+        <a href="cosa.html">Cosa</a>
+    </nav>
+    <nav class="menu" id="menuNav">
+        <a href="#">Profilo</a>
+        <a href="#">Impostazioni</a>
+        <a href="#">Aiuto</a>
+        <a href="#">Logout</a>
+    </nav>
+    <main>
+        <div class="panels">
+            <section class="panel">
+                <h2>MIA STORIA</h2>
+                <p>Mi son svegliata tutta cacata</p>
+            </section>
+            <section class="panel">
+                <h2>PASSIONE</h2>
+                <p>Slurp</p>
+            </section>
+        </div>
+    </main>
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const menuNav = document.getElementById('menuNav');
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menuNav.classList.toggle('show');
+        });
+        document.addEventListener('click', (e) => {
+            if (!menuBtn.contains(e.target) && !menuNav.contains(e.target)) {
+                menuNav.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>

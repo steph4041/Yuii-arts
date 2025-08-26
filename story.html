@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Storia</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #a8edea 0%, #5bc6a9 100%);
+            min-height: 100vh;
+        }
+
+
+        .btn-square {
+            background: rgba(255,255,255,0.7);
+            border-radius: 18px;
+            width: 120px;
+            height: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2e4d43;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-square:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            background: #e6fff7;
+        }
+
+        .topbar {
+  max-width: 95%;         
+  margin: 0 auto 30px auto;
+  background: rgba(255,255,255,0.5);
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  position: relative;
+  padding: 12px 20px;
+  min-height: 70px;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 2em;
+  color: #444;
+  font-family: 'Comic Sans MS', 'Segoe UI', Arial, sans-serif;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+.topbar .btn-square {
+  position: relative;
+  z-index: 2;
+}
+
+
+@media (max-width: 600px) {
+  .topbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+    min-height: auto;
+  }
+  .topbar h1 {
+    position: static;
+    transform: none;
+    margin-top: 10px;
+  }
+}
+
+
+
+@media (max-width: 600px) {
+  .topbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+    min-height: auto;
+  }
+  .topbar h1 {
+    position: static;
+    transform: none;
+    margin-top: 10px;
+  }
+}
+
+
+
+@media (max-width: 600px) {
+  .topbar {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+  .topbar h1 {
+    flex: unset;
+  }
+}
+
+        header {
+            width: 100%;
+            background-color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 20px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            margin-bottom: 30px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 44px;
+            color: #444;
+            font-family: 'Comic Sans MS', 'Segoe UI', Arial, sans-serif;
+        }
+        header .btn-square {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+        }
+
+        .section-list {
+            background: rgba(255,255,255,0.7);
+            border-radius: 18px;
+            margin: 60px auto 0 auto;
+            max-width: 75%;
+            padding: 20px 30px;
+            font-size: 1.6em;
+            color: #444;
+            font-family: 'Comic Sans MS', 'Segoe UI', Arial, sans-serif;
+        }
+        .section-list li {
+            list-style: none;
+            margin-bottom: 32px;
+            position: relative;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .section-list .testo {
+            margin-bottom: 5px;
+            margin-top: 5px;
+            font-weight: normal;
+            font-size: 1em;
+            line-height: 1.5em;
+        }
+        .star {
+            display: inline-block;
+            color: #222;
+            font-size: 1.1em;
+            margin-left: 8px;
+            margin-right: 4px;
+            vertical-align: middle;
+            filter: drop-shadow(0 2px 2px #fff);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="topbar">
+  <a class="btn-square" href="index.html">← Home</a>
+  <h1>Lore!</h1>
+</header>
+
+
+
+    <ul class="section-list">
+        <li>
+          Benvenutə nella mia piccola bacheca! Hehe x3
+Qui trovi la mia collezione di disegni e schizzi, tutti realizzati da me con tanta pazienza… e una buona dose di testardaggine.
+Cerco sempre di migliorare (la perfezione non esiste, ma tentar non nuoce, no?) e di rendere i miei disegni piacevoli anche per gli altri. Ma soprattutto, ci tengo a dare loro una qualità che sia almeno decente… o quantomeno abbastanza buona da non farmi pentire di averli pubblicati.<br><br>
+             Perché fidarti?
+
+Mi piace chiacchierare e ascoltare, ma soprattutto rassicurare chi mi affida un disegno. Se il cliente si sente un po’ insicuro, niente paura: sono qui per buttare fuori nuove idee! E se poi cambia completamente idea? Pazienza, rifaccio tutto da capo pur di vederlo felice e soddisfatto.
+Tutti i miei disegni sono fatti da me, dalle basi alle pose, con tanto impegno e passione. Ah, e puntualità? Prometto di consegnare sempre il lavoro entro i tempi stabiliti, niente scuse! <br><br>
+<span class="star">★</span> La mia storia:
+            <p class="testo">
+                Ehilà!<br>
+Mi chiamo Yui e mi presento così, attraverso i miei disegni. Vivo in Italia, in Lombardia, ma ho origini napoletane. Studio in una scuola d'arte e grafica, quindi ho conoscenze anche in ambito di editing, animazione, fotografia e, naturalmente… disegno digitale!
+Di solito inizio i miei lavori su carta, lo preferisco, anche se questo mi fa impiegare il doppio del tempo per completarli. Fin da piccola ho sempre amato disegnare, ma soprattutto animare (ho avuto anch’io la mia fase Gacha, haha).
+Disegnare è il mio modo di esprimermi e anche la mia attività preferita. È stato mio padre a trasmettermi la passione per il disegno, ma è grazie a mia madre se oggi amo l’arte: fin da quando ero bambina mi ha introdotta in questo mondo meraviglioso, e me ne sono innamorata al punto da voler condividere la mia creatività con gli altri!<br><br>
+Fin da piccola, disegnare è sempre stata la mia più grande passione!
+Poi ho scoperto il magico mondo dei furry... e boom, amore a prima vista! Queste creature dolci, buffe e super espressive mi hanno subito conquistata, tanto che ho iniziato a disegnarle sempre più spesso, fino a creare anche la mia fursona! 🐾
+Tutto è iniziato grazie al mio amico Yoshy (grazie davvero!), ma anche altri amici mi hanno aiutata a conoscere meglio questo universo colorato.
+Oggi posso dire che mi sento proprio a casa: essere una furry è diventato una parte di me, e la mia fursona è come un pezzetto del mio cuore in versione animaletto!
+
+
+            </p>
+        </li>
+
+    </ul>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bacheca</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+  :root { --bordo:#222; }
+
+  body {
+    margin:0; font-family:'Comic Sans MS', system-ui, sans-serif;
+    background:linear-gradient(135deg,#a8edea 0%,#5bc6a9 100%);
+    min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:16px;
+  }
+
+  .btn-square {
+    background: rgba(255,255,255,0.7);
+    border-radius: 18px;
+    width: 120px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2e4d43;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-square:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    background: #e6fff7;
+  }
+
+  header {
+    width: 100%;
+    background-color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    margin-bottom: 50px;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 32px;
+    color: #444;
+  }
+  header .btn-square {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 90px;
+    height: 36px;
+    font-size: 1em;
+  }
+
+  .folders{ display:flex; gap:16px; flex-wrap:wrap; justify-content:center; }
+  .folder{
+    width:100px; height:140px; background:#fff; border:4px solid var(--bordo); border-radius:12px;
+    position:relative; cursor:pointer; transition:transform .2s; box-shadow:0 8px 12px rgba(0,0,0,.12);
+  }
+  .folder:hover{ transform:scale(1.04); }
+  .folder::before{
+    content:""; position:absolute; top:-20px; left:20px; width:60px; height:28px; background:#fff;
+    border:4px solid var(--bordo); border-bottom:none; border-radius:8px 8px 0 0;
+  }
+  .folder span{
+    position:absolute; bottom:14px; left:50%; transform:translateX(-50%); font-weight:800; font-size:18px; color:#222;
+  }
+
+  .back-btn{
+    display:none; margin:14px 0; padding:8px 12px; background:#fff; border:2px solid var(--bordo);
+    border-radius:12px; font-weight:700; cursor:pointer;
+  }
+  .back-btn:hover{ background:#e6fff7; }
+
+  .gallery{
+    display:none; 
+    width:95%; margin-top:10px;
+    grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:12px; 
+  }
+  .gallery.active{ display:grid; }
+  .gallery img{ width:100%; border-radius:14px; box-shadow:0 6px 14px rgba(0,0,0,.18); cursor:pointer; }
+
+  .modal{
+    display:none; position:fixed; inset:0; background:rgba(0,0,0,.8);
+    align-items:center; justify-content:center; z-index:1000;
+  }
+  .modal img{ max-width:92%; max-height:92%; border-radius:14px; box-shadow:0 0 24px #000; }
+
+
+  @media (max-width: 480px){
+    header h1{ font-size: 24px; }
+    .folders{ gap:12px; }
+    .folder{ width:80px; height:120px; }
+    .folder::before{ width:50px; height:24px; left:15px; top:-18px; }
+    .folder span{ font-size:16px; bottom:10px; }
+    .back-btn{ font-size:14px; padding:6px 10px; }
+  }
+</style>
+
+</head>
+<body>
+
+  <header>
+    <a class="btn-square" href="index.html">← Home</a>
+    <h1>Bacheca</h1>
+  </header>
+
+
+  <div class="folders" id="board">
+    <div class="folder" onclick="showGallery('ref')"><span>REFS</span></div>
+    <div class="folder" onclick="showGallery('stickers')"><span>STICKS</span></div>
+    <div class="folder" onclick="showGallery('altri')"><span>ALTRI</span></div>
+  </div>
+
+  <button class="back-btn" id="backBtn" onclick="goBoard()">← Torna alla bacheca</button>
+
+
+  <div id="ref" class="gallery">
+    <img src="gallery/Refs/photo_4_2025-08-27_00-13-30.jpg" alt="Kyko">
+    <img src="gallery/Refs/photo_5_2025-08-27_00-13-30.jpg" alt="Mina">
+    <img src="gallery/Refs/photo_9_2025-08-27_00-13-30.jpg" alt="Mene">
+    <img src="gallery/Refs/photo_20_2025-08-27_00-13-30.jpg" alt="Yuii">
+  </div>
+
+  <div id="stickers" class="gallery">
+    <img src="gallery/Stickers/photo_1_2025-08-27_00-22-20.jpg" alt="voices">
+    <img src="gallery/Stickers/photo_2_2025-08-27_00-22-20.jpg" alt="hug">
+    <img src="gallery/Stickers/photo_3_2025-08-27_00-22-20.jpg" alt="TM">
+    <img src="gallery/Stickers/photo_4_2025-08-27_00-22-20.jpg" alt="TM?">
+    <img src="gallery/Stickers/photo_5_2025-08-27_00-22-20.jpg" alt="Stinky1">
+    <img src="gallery/Stickers/photo_6_2025-08-27_00-22-20.jpg" alt="Stinky2">
+    <img src="gallery/Stickers/photo_7_2025-08-27_00-22-20.jpg" alt="Ok">
+    <img src="gallery/Stickers/photo_8_2025-08-27_00-22-20.jpg" alt="Knife">
+    <img src="gallery/Stickers/photo_9_2025-08-27_00-22-20.jpg" alt="Huhh">
+    <img src="gallery/Stickers/photo_10_2025-08-27_00-22-20.jpg" alt="nom">
+    <img src="gallery/Stickers/photo_11_2025-08-27_00-22-20.jpg" alt="hi">
+  </div>
+
+  <div id="altri" class="gallery">
+    <img src="gallery/Altro/photo_1_2025-08-27_00-13-30.jpg" alt="">
+    <img src="gallery/Altro/photo_6_2025-08-27_00-13-30.jpg" alt="">
+    <img src="gallery/Altro/photo_7_2025-08-27_00-13-30.jpg" alt="">
+    <img src="gallery/Altro/photo_8_2025-08-27_00-13-30.jpg" alt="">
+    <img src="gallery/Altro/photo_10_2025-08-27_00-13-30.jpg" alt="">
+    <img src="gallery/Altro/photo_11_2025-08-27_00-13-30.jpg" alt="">
+    <img src="gallery/Altro/photo_12_2025-08-27_00-13-30.jpg" alt="">
+    <img src="gallery/Altro/photo_13_2025-08-27_00-13-30.jpg" alt="">
+    <img src="gallery/Altro/photo_14_2025-08-27_00-13-30.jpg" alt="">
+    <img src="gallery/Altro/photo_15_2025-08-27_00-13-30.jpg" alt="">
+    <img src="gallery/Altro/photo_16_2025-08-27_00-13-30.jpg" alt="">
+    <img src="gallery/Altro/photo_17_2025-08-27_00-13-30.jpg" alt="">
+    <img src="gallery/Altro/photo_18_2025-08-27_00-13-30.jpg" alt="">
+    <img src="gallery/Altro/photo_19_2025-08-27_00-13-30.jpg" alt="">
+    <img src="gallery/Altro/photo_21_2025-08-27_00-13-30.jpg" alt="">
+    <img src="gallery/Altro/photo_22_2025-08-27_00-13-30.jpg" alt="">
+    <img src="gallery/Altro/photo_23_2025-08-27_00-13-30.jpg" alt="">
+    <img src="gallery/Altro/photo_24_2025-08-27_00-13-30.jpg" alt="">
+    <img src="gallery/Altro/photo_25_2025-08-27_00-13-30.jpg" alt="">
+    <img src="gallery/Altro/photo_26_2025-08-27_00-13-30.jpg" alt="">
+    <img src="gallery/Altro/photo_27_2025-08-27_00-13-30.jpg" alt="">
+    <img src="gallery/Altro/photo_28_2025-08-27_00-13-30.jpg" alt="">
+    <img src="gallery/Altro/photo_29_2025-08-27_00-13-30.jpg" alt="">
+    <img src="gallery/Altro/photo_30_2025-08-27_00-13-30.jpg" alt="">
+  </div>
+
+
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-label="Immagine ingrandita">
+    <img id="modalImg" src="" alt="">
+  </div>
+
+  <script>
+    const board = document.getElementById('board');
+    const backBtn = document.getElementById('backBtn');
+    function showGallery(id){
+      document.querySelectorAll('.gallery').forEach(g=>g.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      board.style.display='none';
+      backBtn.style.display='inline-block';
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+    function goBoard(){
+      document.querySelectorAll('.gallery').forEach(g=>g.classList.remove('active'));
+      board.style.display='flex';
+      backBtn.style.display='none';
+    }
+
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modalImg');
+    document.addEventListener('click', (e)=>{
+      if(e.target.matches('.gallery img')){
+        modalImg.src = e.target.src;
+        modal.style.display = 'flex';
+      }
+    });
+    modal.addEventListener('click', ()=>{ modal.style.display='none'; modalImg.src=''; });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') modal.style.display='none'; });
+  </script>
+</body>
+</html>

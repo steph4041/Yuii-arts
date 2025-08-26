@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Yuii Arts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: linear-gradient(135deg, #e3f6fd 0%, #b3e5fc 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .emoji-bg {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+            top: 0;
+            left: 0;
+        }
+        .emoji {
+            position: absolute;
+            font-size: 2.5em;
+            opacity: 0.22;
+            user-select: none;
+            animation: float 4s ease-in-out infinite;
+            filter: blur(0.5px);
+        }
+        .emoji.e1 { top: 8%; left: 10%; animation-delay: 0s;}
+        .emoji.e2 { top: 20%; left: 80%; animation-delay: 0.5s;}
+        .emoji.e3 { top: 60%; left: 25%; animation-delay: 1s;}
+        .emoji.e4 { top: 80%; left: 70%; animation-delay: 1.5s;}
+        .emoji.e5 { top: 50%; left: 50%; animation-delay: 2s;}
+        .emoji.e6 { top: 30%; left: 30%; animation-delay: 2.5s;}
+        .emoji.e7 { top: 75%; left: 15%; animation-delay: 3s;}
+        .emoji.e8 { top: 15%; left: 60%; animation-delay: 3.5s;}
+        .emoji.e9 { top: 85%; left: 85%; animation-delay: 4s;}
+        .emoji.e10 { top: 40%; left: 70%; animation-delay: 4.5s;}
+        @keyframes float {
+            0%   { transform: translateY(0) scale(1);}
+            50%  { transform: translateY(-18px) scale(1.08);}
+            100% { transform: translateY(0) scale(1);}
+        }
+        header {
+            background: #fff;
+            padding: 48px 0 32px 0;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+            z-index: 2;
+        }
+        .benvenuta {
+            font-family: 'Quicksand', Arial, sans-serif;
+            font-size: 3.2em;
+            font-weight: 700;
+            color: #ff9800;
+            margin-bottom: 0.2em;
+            letter-spacing: 1px;
+        }
+        main {
+            padding: 48px 13vw 0 6vw;
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .box {
+            background: #ffa726;
+            border-radius: 24px;
+            margin-bottom: 38px;
+            padding: 40px 40px 32px 40px;
+            box-shadow: 0 4px 32px rgba(0,0,0,0.09);
+            color: #fff;
+            font-size: 1.25em;
+            position: relative;
+            transition: box-shadow 0.2s;
+            backdrop-filter: blur(0.5px);
+        }
+        .box:hover {
+            box-shadow: 0 8px 40px rgba(0,0,0,0.13);
+        }
+        .box h2 {
+            font-family: 'Quicksand', Arial, sans-serif;
+            font-size: 2em;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 0.5em;
+            letter-spacing: 1px;
+        }
+        .box .stars {
+            position: absolute;
+            top: 18px;
+            right: 28px;
+            font-size: 1.5em;
+            color: #ffd600;
+            opacity: 0.8;
+        }
+        /* Barra laterale con bottoni desktop */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 180px;
+            height: 100vh;
+            background: rgba(41, 41, 41, 0.85);
+            box-shadow: -2px 0 16px rgba(0,0,0,0.09);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 200px;
+            z-index: 20;
+        }
+        .side-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            width: 100%;
+            align-items: center;
+        }
+        .side-btn {
+            background: linear-gradient(90deg, #ff9800 70%, #ffd600 100%);
+            color: #fff;
+            border: none;
+            border-radius: 16px;
+            padding: 18px 0;
+            width: 140px;
+            font-size: 1.1em;
+            font-family: 'Quicksand', Arial, sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+            transition: background 0.2s, transform 0.2s;
+            text-decoration: none;
+            text-align: center;
+            margin: 0 auto;
+            display: block;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+        .side-btn:hover {
+            background: linear-gradient(90deg, #fb8c00 70%, #ffd600 100%);
+            transform: scale(1.07);
+        }
+        /* Mobile: barra orizzontale in basso */
+        @media (max-width: 900px) {
+            main { padding-right: 2vw; padding-left: 2vw; }
+            .sidebar { display: none; }
+            .mobile-bar {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100vw;
+                background: rgba(255,255,255,0.95);
+                box-shadow: 0 -2px 16px rgba(0,0,0,0.09);
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                padding: 10px 0;
+                z-index: 30;
+            }
+            .mobile-btn {
+                background: linear-gradient(90deg, #ff9800 70%, #ffd600 100%);
+                color: #fff;
+                border: none;
+                border-radius: 14px;
+                padding: 12px 0;
+                width: 22vw;
+                min-width: 80px;
+                font-size: 1em;
+                font-family: 'Quicksand', Arial, sans-serif;
+                font-weight: bold;
+                cursor: pointer;
+                box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+                transition: background 0.2s, transform 0.2s;
+                text-decoration: none;
+                text-align: center;
+                margin: 0 2px;
+                letter-spacing: 1px;
+                white-space: nowrap;
+                display: block;
+            }
+            .mobile-btn:active, .mobile-btn:hover {
+                background: linear-gradient(90deg, #fb8c00 70%, #ffd600 100%);
+                transform: scale(1.07);
+            }
+        }
+        @media (max-width: 600px) {
+            .benvenuta { font-size: 2em; }
+            .box { font-size: 1em; padding: 18px; }
+            .mobile-btn { font-size: 0.9em; min-width: 60px; }
+        }
+        /* Nascondi la barra mobile su desktop */
+        .mobile-bar {
+            display: none;
+        }
+
+        /* Mostra la barra mobile solo su schermi piccoli */
+        @media (max-width: 900px) {
+            .sidebar { display: none; }
+            .mobile-bar {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100vw;
+                background: rgba(255,255,255,0.95);
+                box-shadow: 0 -2px 16px rgba(0,0,0,0.09);
+                justify-content: space-around;
+                align-items: center;
+                padding: 10px 0;
+                z-index: 30;
+            }
+            .mobile-btn {
+                background: linear-gradient(90deg, #ff9800 70%, #ffd600 100%);
+                color: #fff;
+                border: none;
+                border-radius: 14px;
+                padding: 12px 0;
+                width: 22vw;
+                min-width: 80px;
+                font-size: 1em;
+                font-family: 'Quicksand', Arial, sans-serif;
+                font-weight: bold;
+                cursor: pointer;
+                box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+                transition: background 0.2s, transform 0.2s;
+                text-decoration: none;
+                text-align: center;
+                margin: 0 2px;
+                letter-spacing: 1px;
+                white-space: nowrap;
+                display: block;
+            }
+            .mobile-btn:active, .mobile-btn:hover {
+                background: linear-gradient(90deg, #fb8c00 70%, #ffd600 100%);
+                transform: scale(1.07);
+            }
+        }
+
+        /* Nascondi i link blu in alto */
+        nav.top-links {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="emoji-bg">
+        <span class="emoji e1">🌸</span>
+        <span class="emoji e2">🐾</span>
+        <span class="emoji e3">💖</span>
+        <span class="emoji e4">🦋</span>
+        <span class="emoji e5">✨</span>
+        <span class="emoji e6">🎨</span>
+        <span class="emoji e7">🌸</span>
+        <span class="emoji e8">💖</span>
+        <span class="emoji e9">🦋</span>
+        <span class="emoji e10">✨</span>
+    </div>
+    <header>
+        <div class="benvenuta">
+            Yuii Arts<br>
+            Benvenuta!
+        </div>
+    </header>
+    <nav class="sidebar">
+        <div class="side-buttons">
+            <a class="side-btn" href="commissioni.html">Commissioni</a>
+            <a class="side-btn" href="esempi.html">Esempi</a>
+            <a class="side-btn" href="regole.html">Regole</a>
+            <a class="side-btn" href="prezzi.html">Prezzi</a>
+        </div>
+    </nav>
+    <nav class="mobile-bar">
+        <a class="mobile-btn" href="commissioni.html">Commissioni</a>
+        <a class="mobile-btn" href="esempi.html">Esempi</a>
+        <a class="mobile-btn" href="regole.html">Regole</a>
+        <a class="mobile-btn" href="prezzi.html">Prezzi</a>
+    </nav>
+    <main>
+        <section class="box">
+            <span class="stars">✨</span>
+            <h2>Mia Storia</h2>
+            <p>
+                cacca piscio
+            </p>
+        </section>
+        <section class="box">
+            <span class="stars">✨</span>
+            <h2>Passione</h2>
+            <p>
+                taglio l'erba del vicino per fumarla
+            </p>
+        </section>
+    </main>
+</body>
+</html>
