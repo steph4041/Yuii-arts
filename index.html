@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <title>Homepage</title>
-    <style>
+  <meta charset="UTF-8">
+  <title>Homepage</title>
+  <style>
 body {
     margin: 0;
     font-family: 'Segoe UI', Arial, sans-serif;
@@ -21,7 +21,6 @@ body {
     padding: 10px;
 }
 
-
 .art-slot {
     width: 100%;
     max-width: 150px;
@@ -29,7 +28,6 @@ body {
     border-radius: 12px;
     object-fit: contain;
 }
-
 
 @media (max-width: 480px) {
     .art-slot {
@@ -40,7 +38,6 @@ body {
         justify-content: space-around;
     }
 }
-
 
 @keyframes float {
     0% { transform: translateY(10px); }
@@ -56,7 +53,6 @@ body {
     text-shadow: 1px 2px 8px #fff;
     animation: pulse 3s ease-in-out infinite;
 }
-
 
 @keyframes pulse {
     0%, 100% { transform: scale(1); }
@@ -123,52 +119,95 @@ body {
     opacity: 1;
 }
 
-/* Responsive mobile */
+
 @media (max-width: 480px){
     .welcome { font-size: 1.6em; margin: 15px 0; }
     .btn-square { width: 120px; height: 160px; font-size: 1em; }
     .art-slot { height: 100px; }
 }
-  footer {
+footer {
     margin-top: auto;
     margin-top: 3rem;
     padding: 1rem 0;
     text-align: center;
     font-size: 0.5rem;
     color: #888;
-  }
-</style>
+}
 
+.lang-btn {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 12px;
+    padding: 8px 14px;
+    font-weight: bold;
+    color: #2e4d43;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: background 0.2s, transform 0.2s;
+    z-index: 2000;
+}
+.lang-btn:hover {
+    background: #e6fff7;
+    transform: scale(1.05);
+}
+  </style>
 </head>
 <body>
+
 <div class="top-bar">
     <img src="gallery/Home/photo_1_2025-08-27_00-19-00.jpg" alt="Art Slot 1" class="art-slot">
     <img src="gallery/Home/photo_2_2025-08-27_00-19-00.jpg" alt="Art Slot 2" class="art-slot">
     <img src="gallery/Home/photo_3_2025-08-27_00-19-00.jpg" alt="Art Slot 3" class="art-slot">
     <img src="gallery/Home/photo_4_2025-08-27_00-19-00.jpg" alt="Art Slot 4" class="art-slot">
 </div>
-    <div class="welcome">
-        Welcome to Yuii's Arts!
-    </div>
-    <div class="buttons">
-        <a class="btn-square" href="story.html">
-            Lore!
-        </a>
-        <a class="btn-square" href="commissioni.html">
-            Regole!
-        </a>
-        <a class="btn-square" href="gallery.html">
-            Bacheca!
-        </a>
-    </div>
-   <div class="footer-app">
+
+<div class="welcome" 
+     data-it="Benvenuto nelle Yuii's Arts!" 
+     data-en="Welcome to Yuii's Arts!">
+     Benvenuto nelle Yuii's Arts!
+</div>
+
+<div class="buttons">
+    <a class="btn-square" href="story.html" data-it="Storia!" data-en="Lore!">Storia!</a>
+    <a class="btn-square" href="commissioni.html" data-it="Regole!" data-en="Rules!">Regole!</a>
+    <a class="btn-square" href="gallery.html" data-it="Bacheca!" data-en="Gallery!">Bacheca!</a>
+</div>
+
+<div class="footer-app">
     <a href="https://t.me/niggaYui" target="_blank"><img src="gallery/tg.png" alt="Telegram"></a>
     <a href="https://www.instagram.com/_.yui._thestarfox._/" target="_blank"><img src="gallery/insta.png" alt="Instagram"></a>
     <a href="mailto:yuihatsume03@gmail.com"><img src="gallery/Mail.png" alt="Gmail"></a>
 </div>
-<footer>
+
+<footer data-it="Realizzato con ❤️ da <strong>Steph404</strong>" 
+        data-en="Made with ❤️ by <strong>Steph404</strong>">
   Realizzato con ❤️ da <strong>Steph404</strong>
 </footer>
+
+
+<button class="lang-btn" id="langToggle">EN</button>
+
+<script>
+  const btn = document.getElementById("langToggle");
+  let currentLang = "it";
+
+  btn.addEventListener("click", () => {
+    currentLang = currentLang === "it" ? "en" : "it";
+    document.querySelectorAll("[data-it]").forEach(el => {
+      el.innerHTML = el.getAttribute(`data-${currentLang}`);
+    });
+    btn.textContent = currentLang === "it" ? "EN" : "IT";
+  });
+
+
+  window.addEventListener("DOMContentLoaded", () => {
+    if (navigator.language && !navigator.language.startsWith("it")) {
+      btn.click();
+    }
+  });
+</script>
 
 </body>
 </html>

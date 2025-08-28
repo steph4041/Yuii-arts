@@ -1,216 +1,165 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <title>Commissioni - Yuii Arts</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #a8edea 0%, #5bc6a9 100%);
-            min-height: 100vh;
-        }
+  <meta charset="UTF-8">
+  <title>Commissioni</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #a8edea 0%, #5bc6a9 100%);
+      min-height: 100vh;
+    }
 
+    .btn-square {
+      background: rgba(255,255,255,0.7);
+      border-radius: 18px;
+      width: 120px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #2e4d43;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .btn-eng {
+      background: rgba(255,255,255,0.7);
+      border-radius: 18px;
+      width: 60px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #2e4d43;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .btn-square:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      background: #e6fff7;
+    }
+    .btn-eng:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      background: #e6fff7;
+    }
 
-        .btn-square {
-            background: rgba(255,255,255,0.7);
-            border-radius: 18px;
-            width: 120px;
-            height: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #2e4d43;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-            text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .btn-square:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-            background: #e6fff7;
-        }
+    .topbar {
+      max-width: 95%;         
+      margin: 0 auto 30px auto;
+      background: rgba(255,255,255,0.5);
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      position: relative;
+      padding: 12px 20px;
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-        .topbar {
-  max-width: 95%;         
-  margin: 0 auto 30px auto;
-  background: rgba(255,255,255,0.5);
-  border-radius: 16px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  position: relative;
-  padding: 12px 20px;
-  min-height: 70px;
-}
+    .topbar h1 {
+      margin: 0 auto;
+      font-size: 2em;
+      color: #444;
+      font-family: 'Comic Sans MS', 'Segoe UI', Arial, sans-serif;
+      text-align: center;
+    }
 
-.topbar h1 {
-  margin: 0;
-  font-size: 2em;
-  color: #444;
-  font-family: 'Comic Sans MS', 'Segoe UI', Arial, sans-serif;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  white-space: nowrap;
-}
-
-.topbar .btn-square {
-  position: relative;
-  z-index: 2;
-}
-
-
-@media (max-width: 600px) {
-  .topbar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 12px;
-    min-height: auto;
-  }
-  .topbar h1 {
-    position: static;
-    transform: none;
-    margin-top: 10px;
-  }
-}
-
-
-
-@media (max-width: 600px) {
-  .topbar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 12px;
-    min-height: auto;
-  }
-  .topbar h1 {
-    position: static;
-    transform: none;
-    margin-top: 10px;
-  }
-}
-
-
-
-@media (max-width: 600px) {
-  .topbar {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
-  .topbar h1 {
-    flex: unset;
-  }
-}
-
-        header {
-            width: 100%;
-            background-color: rgba(255,255,255,0.5);
-            text-align: center;
-            padding: 20px 0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            margin-bottom: 30px;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 44px;
-            color: #444;
-            font-family: 'Comic Sans MS', 'Segoe UI', Arial, sans-serif;
-        }
-        header .btn-square {
-            position: absolute;
-            top: 16px;
-            left: 16px;
-        }
-
-        .section-list {
-            background: rgba(255,255,255,0.7);
-            border-radius: 18px;
-            margin: 60px auto 0 auto;
-            max-width: 75%;
-            padding: 20px 30px;
-            font-size: 1.6em;
-            color: #444;
-            font-family: 'Comic Sans MS', 'Segoe UI', Arial, sans-serif;
-        }
-        .section-list li {
-            list-style: none;
-            margin-bottom: 32px;
-            position: relative;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-        .section-list .testo {
-            margin-bottom: 5px;
-            margin-top: 5px;
-            font-weight: normal;
-            font-size: 1em;
-            line-height: 1.5em;
-        }
-        .star {
-            display: inline-block;
-            color: #222;
-            font-size: 1.1em;
-            margin-left: 8px;
-            margin-right: 4px;
-            vertical-align: middle;
-            filter: drop-shadow(0 2px 2px #fff);
-        }
-    </style>
+    .section-list {
+      background: rgba(255,255,255,0.7);
+      border-radius: 18px;
+      margin: 60px auto 0 auto;
+      max-width: 75%;
+      padding: 20px 30px;
+      font-size: 1.6em;
+      color: #444;
+      font-family: 'Comic Sans MS', 'Segoe UI', Arial, sans-serif;
+    }
+    .section-list li {
+      list-style: none;
+      margin-bottom: 32px;
+      position: relative;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    .section-list .testo {
+      margin-bottom: 5px;
+      margin-top: 5px;
+      font-weight: normal;
+      font-size: 1em;
+      line-height: 1.5em;
+    }
+    .star {
+      display: inline-block;
+      color: #222;
+      font-size: 1.1em;
+      margin-left: 8px;
+      margin-right: 4px;
+      vertical-align: middle;
+      filter: drop-shadow(0 2px 2px #fff);
+    }
+  </style>
 </head>
 <body>
 
-    <header class="topbar">
-  <a class="btn-square" href="index.html">← Home</a>
-  <h1>Commissioni</h1>
-</header>
+  <header class="topbar">
+    <a class="btn-square" href="index.html">← Home</a>
+    <h1 data-it="Commissioni" data-en="Commissions">Commissioni</h1>
+    <button class="btn-eng" id="translateBtn">EN</button>
+  </header>
 
+  <ul class="section-list">
+    <li>
+      <span data-it="• COSA POSSO DISEGNARE ★" data-en="• WHAT I CAN DRAW ★">• COSA POSSO DISEGNARE ★</span>
+      <p class="testo" data-it="- Feral<br>- Anthros<br>- Umani<br>" 
+         data-en="- Feral<br>- Anthros<br>- Humans<br>">- Feral<br>- Anthros<br>- Umani<br></p>
 
+      <span data-it="• COSA NON POSSO DISEGNARE ★" data-en="• WHAT I CANNOT DRAW ★">• COSA NON POSSO DISEGNARE ★</span>
+      <p class="testo" data-it="- NSFW<br>" data-en="- NSFW<br>">- NSFW<br></p>         
+    </li>
 
-    <ul class="section-list">
-        <li>
-            • COSA POSSO DISEGNARE <span class="star">★</span>
-            <p class="testo">
-                - Feral<br>
-                - Anthros<br>
-                - Umani<br>
-            </p>
-            • COSA NON POSSO DISEGNARE <span class="star">★</span>   
-            <p class="testo">
-                - NSFW<br>
+    <li>
+      <span data-it="• PREZZI ★" data-en="• PRICES ★">• PREZZI ★</span>
+      <p class="testo" 
+         data-it="- Head only: 6€<br>- Paws only: 2€<br>- 3 stickers: 5€<br>- I'll make you a sona!: 4€<br>- Full body: 9€<br>- Half body: 4,50€<br><br>- PLAIN REFSHEET: 11€<br>- FULL REFSHEET: 15€<br>"
+         data-en="- Head only: €6<br>- Paws only: €2<br>- 3 stickers: €5<br>- I'll make you a sona!: €4<br>- Full body: €9<br>- Half body: €4.50<br><br>- PLAIN REFSHEET: €11<br>- FULL REFSHEET: €15<br>">
+        - Head only: 6€<br>- Paws only: 2€<br>- 3 stickers: 5€<br>- I'll make you a sona!: 4€<br>- Full body: 9€<br>- Half body: 4,50€<br><br>- PLAIN REFSHEET: 11€<br>- FULL REFSHEET: 15€<br>
+      </p>
+    </li>
 
-            </p>         
-        </li>
-        <li>
-            • PREZZI <span class="star">★</span>
-            <p class="testo">
-- Head only: 6€<br>
-- Paws only: 2€<br>
-- 3 stickers: 5€<br>
-- I'll make you a sona!: 4€<br>
-- Full body: 9€<br>
-- Half body: 4,50€<br><br>
-- PLAIN REFSHEET: 11€<br>
-- FULL REFSHEET: 15€<br>
-            </p>
-        </li>
-        <li>
-            • COME FUNZIONA E COME SI PAGA <span class="star">★</span>
-            <p class="testo">
-A tutti coloro che decideranno di commissionarmi un disegno: vi invierò degli sketch appena possibile, promesso! Quindi, se potete, evitate di chiedermi ogni giorno “a che punto sei?” ci tengo alla vostra curiosità, ma anche alla mia sanità mentale!
-Durante il processo, sarà possibile richiedere fino a 3 modifiche, quindi pensateci bene prima di dire “forse lo preferisco con un cappello da cowboy”.
-Una volta finito, vi invierò il disegno in formato .png pronto per essere ammirato e custodito.
-Ah, e il pagamento? Si fa tramite PayPal. Facile, veloce e sicuro!
-            </p>
-        </li>
-    </ul>
+    <li>
+      <span data-it="• COME FUNZIONA E COME SI PAGA ★" data-en="• HOW IT WORKS & PAYMENT ★">• COME FUNZIONA E COME SI PAGA ★</span>
+      <p class="testo" 
+         data-it="A tutti coloro che decideranno di commissionarmi un disegno: vi invierò degli sketch appena possibile, promesso! Quindi, se potete, evitate di chiedermi ogni giorno “a che punto sei?” ci tengo alla vostra curiosità, ma anche alla mia sanità mentale!<br><br>Durante il processo, sarà possibile richiedere fino a 3 modifiche, quindi pensateci bene prima di dire “forse lo preferisco con un cappello da cowboy”.<br><br>Una volta finito, vi invierò il disegno in formato .png pronto per essere ammirato e custodito.<br><br>Ah, e il pagamento? Si fa tramite PayPal. Facile, veloce e sicuro!"
+         data-en="To everyone who commissions me: I’ll send you sketches as soon as possible, promise! Please avoid asking me every day 'how’s it going?' — I care about your curiosity, but also my sanity!<br><br>During the process, you can request up to 3 changes, so think carefully before saying 'maybe I prefer it with a cowboy hat.'<br><br>Once finished, I’ll send you the drawing in .png format, ready to admire and keep.<br><br>And the payment? It’s done through PayPal. Easy, fast, and secure!">
+        A tutti coloro che decideranno di commissionarmi un disegno: vi invierò degli sketch appena possibile, promesso! Quindi, se potete, evitate di chiedermi ogni giorno “a che punto sei?” ci tengo alla vostra curiosità, ma anche alla mia sanità mentale!<br><br>Durante il processo, sarà possibile richiedere fino a 3 modifiche, quindi pensateci bene prima di dire “forse lo preferisco con un cappello da cowboy”.<br><br>Una volta finito, vi invierò il disegno in formato .png pronto per essere ammirato e custodito.<br><br>Ah, e il pagamento? Si fa tramite PayPal. Facile, veloce e sicuro!
+      </p>
+    </li>
+  </ul>
+
+  <script>
+    const btn = document.getElementById("translateBtn");
+    let currentLang = "it";
+
+    btn.addEventListener("click", () => {
+      currentLang = currentLang === "it" ? "en" : "it";
+      document.querySelectorAll("[data-it]").forEach(el => {
+        el.innerHTML = el.getAttribute(`data-${currentLang}`);
+      });
+      btn.textContent = currentLang === "it" ? "EN" : "IT";
+    });
+  </script>
+
 </body>
 </html>
